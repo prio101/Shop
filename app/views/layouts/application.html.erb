@@ -11,6 +11,7 @@
   </head>
 
   <body>
+    <%= render partial: '/layouts/navbar' %>
     <% flash.each do |type, msg| %>
       <div class="bg-gray-900 text-white flex flex-1 justify-center items-center font-semibold">
         <%= msg %>
