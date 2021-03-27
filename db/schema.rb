@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_170537) do
+ActiveRecord::Schema.define(version: 2021_03_27_202147) do
 
   create_table "permissions", force: :cascade do |t|
     t.string "resource_name"
@@ -19,6 +19,21 @@ ActiveRecord::Schema.define(version: 2021_03_27_170537) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["role_id"], name: "index_permissions_on_role_id"
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.decimal "price", precision: 8, scale: 2
+    t.integer "products_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["products_id"], name: "index_prices_on_products_id"
+  end
+
+  create_table "products", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "roles", force: :cascade do |t|
