@@ -2,10 +2,22 @@
   <div class="flex flex-1">
     <div class="flex flex-1 justify-center">Shop</div>
     <div class="flex flex-1 justify-center">Products</div>
-    <div class="flex flex-1 justify-center">Profile</div>
+    <% if logged_in? %>
+      <div class="flex flex-1 justify-center">  
+        <%= link_to 'Profile', users_path(current_user), class: 'cursor-pointer border-b border-transparent hover:border-white' %>
+      </div>
+    <% end %>
+    
+    
   </div>
-  <div class="flex flex-1 justify-end">
-    <div class="flex flex-1 justify-end px-10">Cart</div>
+  <div class="flex flex-1 justify-end px-10 items-center">
+    <div class="flex justify-end px-10">Cart</div>
+    <div class="flex  justify-end">
+      <% if logged_in? %>
+        <%= button_to "Logout", authentication_logout_path, method: :delete, class: 'cursor-pointer bg-gray-900 text-white font-bold p-2 rounded-lg' %>
+      <% else %>
+        <%= button_to "Login Page", new_authentication_session_path, method: :get, class: 'cursor-pointer bg-gray-900 text-white font-bold p-2 rounded-lg' %>
+      <% end %>
+    </div>
   </div>
-  
 </div>
