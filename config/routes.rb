@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :authentication do
     resources :sessions, only: [ :new, :create, :destroy ]
     get 'signup', to: 'sessions#signup'
-    post 'signup', to: 'sessions#create_user'
+    post 'register_user', to: 'sessions#register_user'
     delete "logout", to: "sessions#destroy"
   end
 
