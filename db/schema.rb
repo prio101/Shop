@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_173203) do
+ActiveRecord::Schema.define(version: 2021_03_27_170537) do
+
+  create_table "permissions", force: :cascade do |t|
+    t.string "resource_name"
+    t.string "permissions_list", default: "[]"
+    t.integer "role_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["role_id"], name: "index_permissions_on_role_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.string "summary"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_roles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
