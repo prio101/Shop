@@ -13,11 +13,6 @@
         <%= link_to 'Add to Cart', '', class: 'bg-indigo-400 text-white p-2 rounded-md'%>
         
       </div>
-      <div class="flex flex-1 m-2">
-        <% if current_user.role.admin? %>
-          <%= link_to 'Edit Product', edit_product_path(product), class: 'bg-indigo-400 text-white p-2 rounded-md'%>
-        <% end %>
-      </div>
     <% end %>
   </div>
 </div>
