@@ -7,7 +7,7 @@
         <div>
             <h2 class="text-2xl font-semibold leading-tight">Orders</h2>
         </div>
-        <div class="flex flex-col">
+        <div class="flex flex-col border border-gray-400 rounded-md shadow-lg p-3">
           list of ordered items:
           <% CartItem.where(order_id: Order.last.id).each do |item| %>
             <div class="flex text-gray-800 font-bold">Name: <%= item.product.title %></div>
