@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       post 'reduce_quantity', as: 'cart_item_reduce'
     end
   end
-  resources :orders, only: [ :index, :new, :create ]
+  resources :orders, only: [ :index, :new, :create, :show ]
 
   namespace :authentication do
     resources :sessions, only: [ :new, :create, :destroy ]

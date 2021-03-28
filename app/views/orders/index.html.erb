@@ -32,7 +32,7 @@
                             </td>
                             <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <p class="text-gray-900 whitespace-no-wrap text-center">
-                                  <%= order.name %>
+                                  <%= link_to order.name, order_path(order.id), class: 'text-indigo-400' %>
                                 </p>
                             </td> 
                         </tr>
