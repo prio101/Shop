@@ -14,8 +14,7 @@ class ProductsController < ApplicationController
   def create
     @product.title = product_params[:title]
     @product.description = product_params[:description]
-    if @product.valid? and @product.save
-      byebug
+    if @product.valid? and @product.save      
       flash[:success] = 'Sucessfully Created'
       redirect_to products_path
     else
