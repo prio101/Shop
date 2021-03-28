@@ -1,5 +1,5 @@
 class ShopsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.where(published: true)
   end
 end

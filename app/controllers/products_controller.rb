@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    if @product.delete
+    if @product.update(published: false)
       redirect_to products_path
     end
   end
@@ -58,6 +58,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:title, :description)
+    params.require(:product).permit(:title, :description, :price)
   end
 end
