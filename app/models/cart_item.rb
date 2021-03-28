@@ -6,4 +6,6 @@ class CartItem < ApplicationRecord
   def price
     Price.find(self.price_id).price
   end
+
+  
 end

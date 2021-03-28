@@ -9,7 +9,7 @@
             <div class="flex flex-1">Item Name:  <span class="text-blue-400 px-2"><%= cart_item.product.title %></span></div>
             <div class="flex flex-1">Quantity:  <span class="text-blue-400 px-2"><%= cart_item.quantity %></span></div>
             <div class="flex flex-1">Item Price:  <span class="text-blue-400 px-2"><%= number_to_currency(cart_item.product.latest_price) %></span></div>
-            <div class="flex flex-1">Total Price:  <span class="text-blue-400 px-2"><%#= number_to_currency(cart_item.total_price) %></span></div>
+            <div class="flex flex-1">Total Price:  <span class="text-blue-400 px-2"><%= number_to_currency(cart_item.product.latest_price * cart_item.quantity) %></span></div>
             <div class="flex flex-1">
               <%= link_to "Add one", cart_item_add_cart_item_path(:id => cart_item), method: :post, class: 'm-2 bg-indigo-400 p-3 text-white font-bold' %>
               <%= link_to "Reduce one", cart_item_reduce_cart_item_path(:id => cart_item), method: :post, class: 'm-2 bg-purple-300 p-3 text-white font-bold' %>

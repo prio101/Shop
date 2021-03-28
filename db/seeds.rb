@@ -14,9 +14,28 @@ if Rails.env.development?
           )
 
   # Role Create
-  Role.create!(
+  admin_role = Role.create!(
     name: 'admin',
     summary: 'Admin Role',
     user_id: admin.id 
+  )
+
+  # permissions
+  Permission.create!(
+    resource_name: 'products',
+    permissions_list: 'index, create, new, edit, update, destroy',
+    role_id: admin_role.id
+  )
+
+  Permission.create!(
+    resource_name: 'prices',
+    permissions_list: 'index, create, new, edit, update, destroy',
+    role_id: admin_role.id
+  )
+
+  Permission.create!(
+    resource_name: 'users',
+    permissions_list: 'index, create, new, edit, update, destroy',
+    role_id: admin_role.id
   )
 end
