@@ -1,0 +1,32 @@
+<div class="flex flex-col flex-1 w-auto my-10 p-5 border border-gray-300 rounded-lg shadow-lg">
+  <div class="text-xl font-bold border-b border-gray-400">Confirmation</div>
+  <div class="flex flex-col">
+    <div class="flex text-base text-gray-600">
+      Name: <%=  @order.name %>
+    </div>
+
+    <div class="flex text-base text-gray-600">
+      Street Number: <%= @order.street %>
+    </div>
+
+    <div class="flex text-base text-gray-600">
+      Zip Code: <%= @order.zip_code %>
+    </div>
+
+    <div class="flex text-base text-gray-600">
+      Country: <%= @order.country %>
+    </div>
+
+    <div class="flex text-base text-gray-600">
+      Email: <%= @order.email %>
+    </div>
+
+    <div class="flex text-base text-gray-600">
+      Account Number: <%=  @order.account_number %>
+    </div>
+
+    <div class="flex text-base text-gray-600">
+      Bank Issue Number: <%=  @order.bank_issue_number %>
+    </div>    
+  </div>
+</div>

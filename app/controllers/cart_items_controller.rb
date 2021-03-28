@@ -10,7 +10,6 @@ class CartItemsController < ApplicationController
       @cart_item = CartItem.new
       assign_values @cart_item, product
     end
-    byebug
     if @cart_item.valid? and @cart_item.save
       flash[:success] = 'Successfully Added the Product to the Cart'
       redirect_to root_path

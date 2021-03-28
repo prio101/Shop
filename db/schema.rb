@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_28_151357) do
+ActiveRecord::Schema.define(version: 2021_03_28_193537) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id"
@@ -19,7 +19,9 @@ ActiveRecord::Schema.define(version: 2021_03_28_151357) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "quantity", default: 0
+    t.integer "order_id"
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["order_id"], name: "index_cart_items_on_order_id"
     t.index ["price_id"], name: "index_cart_items_on_price_id"
     t.index ["product_id"], name: "index_cart_items_on_product_id"
   end
@@ -29,6 +31,31 @@ ActiveRecord::Schema.define(version: 2021_03_28_151357) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "name"
+    t.string "street"
+    t.string "zip_code"
+    t.string "country"
+    t.string "email"
+    t.integer "account_number"
+    t.integer "bank_issue_number"
+    t.integer "payment_details_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
+    t.index ["payment_details_id"], name: "index_orders_on_payment_details_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "payment_details", force: :cascade do |t|
+    t.integer "account_number"
+    t.integer "bank_issue_number"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_payment_details_on_user_id"
   end
 
   create_table "permissions", force: :cascade do |t|
@@ -64,6 +91,18 @@ ActiveRecord::Schema.define(version: 2021_03_28_151357) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_roles_on_user_id"
+  end
+
+  create_table "shipping_addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "zip_code"
+    t.string "country"
+    t.string "name"
+    t.string "email"
+    t.integer "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_shipping_addresses_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

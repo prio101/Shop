@@ -16,8 +16,6 @@
               <%= link_to "Remove item", cart_item_path(cart_item), method: :delete, class: 'm-2 bg-red-400 p-3 text-white font-bold' %>
             </div>
           </div>
-          
-          
         <% end %>
       </div>
     </div>
@@ -29,6 +27,6 @@
 
 
 <div class="flex flex-1 justify-center items-center">
-  <%#= link_to "Proceed to checkout", new_order_path %><br>
+  <%= link_to "Proceed to checkout", new_order_path, class: 'm-2 bg-blue-400 p-3 text-white font-bold' %>
   <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"},  class: 'm-2 bg-red-400 p-3 text-white font-bold' %>
 </div>

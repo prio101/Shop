@@ -1,7 +1,7 @@
 class PricesController < ApplicationController
   before_action :check_permissions
   before_action :price_object, only: [ :new, :create ]
-  before_action :set_price, except: [ :index, :new, :create ]
+  before_action :set_price, except: [ :index, :new, :create, :show ]
 
 
   def index
@@ -24,6 +24,9 @@ class PricesController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
@@ -31,6 +34,9 @@ class PricesController < ApplicationController
   end
 
   def destroy
+    if @price.destroy
+      redirect_to prices_path
+    end
   end
 
   private
@@ -39,7 +45,7 @@ class PricesController < ApplicationController
     @price = Price.find(params[:id])
   end
 
-  def check_permissions    
+  def check_permissions   
     redirect_to root_path unless logged_in? and action_permissions_list(controller_name).include?(action_name)
   end
 

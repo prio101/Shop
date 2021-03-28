@@ -18,13 +18,16 @@
       <div class="flex flex-1 justify-center">  
         <%= link_to 'Profile', user_path(current_user), class: 'cursor-pointer border-b border-transparent hover:border-white' %>
       </div>
+      <div class="flex flex-1 justify-center">  
+        <%= link_to 'Orders', orders_path, class: 'cursor-pointer border-b border-transparent hover:border-white' %>
+      </div>
     <% end %>
     
     
   </div>
   <div class="flex flex-1 justify-end px-10 items-center">
     <div class="flex justify-end px-10">
-      <%= link_to 'Cart', cart_path(@current_cart) %>
+      <%= link_to 'Cart', cart_path(@current_cart) %> <span class="inline-block mx-1 bg-red-400 text-white px-3 rounded-md"><%= cart_item_count %></span>
     </div>
     <div class="flex  justify-end">
       <% if logged_in? %>

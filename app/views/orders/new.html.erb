@@ -1,0 +1,9 @@
+<h1 class="flex flex-1 justify-center text-xl">Order Steps</h1>
+
+<div class="flex flex-1 justify-center">
+  <%= form_for @order do |f| %>
+    <%= render partial: "#{@order.current_step}_step", locals: { f: f }  %>
+    <%= f.submit "Continue", class: 'btn-blue' %>
+    <p><%= f.submit "Back", :name => "back_button", class: 'btn-red' unless @order.first_step? %></p>
+  <% end %>
+</div>
