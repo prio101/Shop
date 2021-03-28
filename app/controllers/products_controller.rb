@@ -16,18 +16,24 @@ class ProductsController < ApplicationController
     @product.description = product_params[:description]
     if @product.valid? and @product.save      
       flash[:success] = 'Sucessfully Created'
-      redirect_to products_path
+      redirect_to new_price_path 
     else
       flash[:error] = 'Can Not Be Created'
       redirect_to root_path
     end
-    
   end
 
   def show
   end
 
   def edit
+  end
+
+  def update
+    if @product.update_attributes(product_params)
+      flash[:success] = 'Updated Product'
+      redirect_to root_path
+    end
   end
 
   def destroy
@@ -41,6 +47,7 @@ class ProductsController < ApplicationController
   def check_permissions
     redirect_to root_path unless logged_in? and action_permissions_list(controller_name).include?(action_name)
   end
+
 
   def product_object
     @product = Product.new
