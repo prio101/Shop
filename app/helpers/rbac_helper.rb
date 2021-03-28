@@ -1,7 +1,7 @@
 module RbacHelper
 
   def action_permissions_list(resource_name)
-    resource_name?(resource_name).permissions_list
+    resource_name?(resource_name).permissions_list.delete(' ').split(',')
   end
   
   def resource_name?(resource_name)

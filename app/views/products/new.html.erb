@@ -1,0 +1,14 @@
+<div class="flex flex-1 flex-col min-h-screen justify-start items-center py-20">
+  <%= form_for @product do |f| %>
+    <div class="flex m-2">
+      <%= f.label :title, class: 'px-2 py-2 text-gray-900 font-bold' %>
+      <%= f.text_field :title, class: 'px-2 py-2 border border-gray-900 rounded-md'%>
+    </div>
+    <div class="flex m-2">
+      <%= f.label :description, class: 'px-2 py-2 text-gray-900 font-bold' %>
+      <%= f.text_area :description, class: 'px-2 py-2 border border-gray-900 rounded-md', rows: 10, cols: 24 %>
+    </div>
+    
+    <%= submit_tag "#{@product.new_record? ? 'Create' : 'Update'} Product", class: 'cursor-pointer bg-indigo-400 text-white rounded-md px-2 py-2' %>
+  <% end %>
+</div>
