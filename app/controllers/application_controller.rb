@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include RbacHelper
   
+  before_action :current_cart
+
   helper_method :logged_in?, :current_user
 
   def current_user
@@ -18,4 +20,13 @@ class ApplicationController < ActionController::Base
   end
 
   
+  private
+    def current_cart
+      unless session[:cart_id].nil?
+        @current_cart = Cart.find(session[:cart_id])
+      else
+        @current_cart = Cart.create
+        session[:cart_id] = @current_cart.id
+      end
+    end
 end

@@ -23,7 +23,9 @@
     
   </div>
   <div class="flex flex-1 justify-end px-10 items-center">
-    <div class="flex justify-end px-10">Cart</div>
+    <div class="flex justify-end px-10">
+      <%= link_to 'Cart', cart_path(@current_cart) %>
+    </div>
     <div class="flex  justify-end">
       <% if logged_in? %>
         <%= button_to "Logout", authentication_logout_path, method: :delete, class: 'cursor-pointer bg-gray-900 text-white font-bold p-2 rounded-lg' %>

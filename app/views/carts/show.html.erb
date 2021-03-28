@@ -1,0 +1,34 @@
+<div class="flex flex-1 justify-center items-center">
+  <div class="flex flex-col w-2/4 h-auto p-20 m-10 border border-gray-200 shadow-lg rounded-lg">
+    <div class="flex flex-1 justify-center items-center text-xl font-semibold text-gray-800">Shop Cart</div>
+
+    <div class="flex flex-1">
+      <div class="flex flex-1 flex-col">
+        <% @cart.cart_items.each do |cart_item| %>
+          <div class="flex flex-1 flex-col font-semibold text-gray-600 items-start border border-gray-200 rounded-lg shadow-lg p-3">
+            <div class="flex flex-1">Item Name:  <span class="text-blue-400 px-2"><%= cart_item.product.title %></span></div>
+            <div class="flex flex-1">Quantity:  <span class="text-blue-400 px-2"><%= cart_item.quantity %></span></div>
+            <div class="flex flex-1">Item Price:  <span class="text-blue-400 px-2"><%= number_to_currency(cart_item.product.latest_price) %></span></div>
+            <div class="flex flex-1">Total Price:  <span class="text-blue-400 px-2"><%#= number_to_currency(cart_item.total_price) %></span></div>
+            <div class="flex flex-1">
+              <%= link_to "Add one", cart_item_add_cart_item_path(:id => cart_item), method: :post, class: 'm-2 bg-indigo-400 p-3 text-white font-bold' %>
+              <%= link_to "Reduce one", cart_item_reduce_cart_item_path(:id => cart_item), method: :post, class: 'm-2 bg-purple-300 p-3 text-white font-bold' %>
+              <%= link_to "Remove item", cart_item_path(cart_item), method: :delete, class: 'm-2 bg-red-400 p-3 text-white font-bold' %>
+            </div>
+          </div>
+          
+          
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<div class="flex flex-1 justify-center items-center">
+  <%#= link_to "Proceed to checkout", new_order_path %><br>
+  <%= link_to "Empty cart", cart_path(@current_cart),method: :delete, data: {confirm: "Are you sure?"},  class: 'm-2 bg-red-400 p-3 text-white font-bold' %>
+</div>

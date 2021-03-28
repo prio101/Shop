@@ -4,6 +4,13 @@ Rails.application.routes.draw do
   resources :products
   resources :users, only: [ :show, :edit, :update ]
   resources :prices, except: [ :show ]
+  resources :carts, only: [ :show, :destroy ]
+  resources :cart_items, only: [ :create, :destroy ] do
+    member do
+      post 'add_quantity', as: 'cart_item_add'
+      post 'reduce_quantity', as: 'cart_item_reduce'
+    end
+  end
 
   namespace :authentication do
     resources :sessions, only: [ :new, :create, :destroy ]
