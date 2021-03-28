@@ -1,0 +1,15 @@
+<div class="flex flex-1 flex-col min-h-screen justify-start items-center py-20">
+  <div class="flex text-gray-900 text-xl font-bold">New Price</div>
+  <%= form_for @price do |f| %>
+    <div class="flex m-2">
+      <%= f.label :price, class: 'px-2 py-2 text-gray-900 font-bold' %>
+      <%= f.text_field :price, value: number_with_precision(f.object.price, precision: 2), class: 'px-2 py-2 border border-gray-900 rounded-md'%>
+    </div>
+    <div class="flex m-2">
+      <%= f.label :product_id, class: 'px-2 py-2 text-gray-900 font-bold' %>
+      <%= f.select :product_id, Product.all.map { |product| [ "#{product.title}-#{product.id}", product.id] }, class: 'px-2 py-4 border border-black rounded-md'%>
+    </div>
+    
+    <%= submit_tag "#{@price.new_record? ? 'Create' : 'Update'} Price", class: 'cursor-pointer bg-indigo-400 text-white rounded-md px-2 py-2' %>
+  <% end %>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_27_202147) do
+ActiveRecord::Schema.define(version: 2021_03_28_105839) do
 
   create_table "permissions", force: :cascade do |t|
     t.string "resource_name"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_03_27_202147) do
     t.integer "products_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "product_id"
+    t.index ["product_id"], name: "index_prices_on_product_id"
     t.index ["products_id"], name: "index_prices_on_products_id"
   end
 
@@ -52,4 +54,5 @@ ActiveRecord::Schema.define(version: 2021_03_27_202147) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "prices", "products"
 end
