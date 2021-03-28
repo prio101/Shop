@@ -5,7 +5,7 @@
 
     <% if logged_in? and current_user.role.admin? %>
       <div class="flex flex-1 justify-center">
-        <%= link_to 'Products Admin Panel', new_product_path, class: 'cursor-pointer border-b border-transparent hover:border-white' %>
+        <%= link_to 'Products Path', products_path, class: 'cursor-pointer border-b border-transparent hover:border-white' %>
       </div>
     <% end %>
 
